@@ -285,7 +285,7 @@ if (str_contains($content, 'SEND_IMAGE') || str_contains($content, 'SEND_VIDEO')
                     "delay" => 3000, 
                     "presence" => "recording" 
                 ], 
-            "cloudzapiAudio" => [
+            "whatsappAudio" => [
                        
                         "audio" => $url_media[0]
                     ] 
