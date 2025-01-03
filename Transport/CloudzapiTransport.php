@@ -316,19 +316,24 @@ if (str_contains($content, 'SEND_IMAGE') || str_contains($content, 'SEND_VIDEO')
 
 }else{
 
-    $url='https://api.cloudzapi.com/'.$this->sender_id.'/message/sendText';
+    $url='https://apichat.sancton.com.br/api/messages/send';
 
     $data= [
-        "numbers" => [
-            $number
-           ], 
+        "number" => $number,
+	"openTicket" => "0",
+        "queueId"=>"0",
+	"body" => $content
+
+	 /** "numbers" => [
+                $number
+                ], 
         "options" => [
                  "delay" => 3000, 
                  "presence" => "composing" 
               ], 
         "textMessage" => [
                     "text" => $content
-                 ] 
+                 ]  */
      ]; 
     
     $data_string = json_encode($data);
@@ -344,7 +349,7 @@ if (str_contains($content, 'SEND_IMAGE') || str_contains($content, 'SEND_VIDEO')
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
       'Content-Type: application/json',
-      'apikey: '.$this->api_key.'',
+      'Authorization Bearer: '.$this->api_key.'',
       'Content-Length: ' . strlen($data_string))
     );
     echo $res=curl_exec($ch);
