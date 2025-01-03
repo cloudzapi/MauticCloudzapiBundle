@@ -66,7 +66,7 @@ class CloudzapiIntegration extends AbstractIntegration
     /**
      * @return array
      */
-    public function getFormSettings()
+    public function getFormSettings(): array
     {
         return [
             'requires_callback'      => false,
